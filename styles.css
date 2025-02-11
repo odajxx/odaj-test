@@ -45,9 +45,10 @@ body {
     width: 100%;
     transition: box-shadow 0.5s ease-in-out;
 }
+
 .navbar {
     display: grid;
-    grid-template-columns: 0.2fr auto auto; /* Adjusted column sizing */
+    grid-template-columns: 1fr 2fr 1fr; /* Even spacing */
     align-items: center;
     height: 80px;
     padding: 0 20px;
@@ -59,15 +60,8 @@ body {
 .theme-toggle {
     font-size: 20px;
     cursor: pointer;
-    position: absolute;
-    top: 25px;
-    right: auto; /* Reduced from 70px */
+    justify-self: end; /* Moves it to the right */
     z-index: 1000;
-}
-
-#icon {
-    font-size: 20px;
-    cursor: pointer;
 }
 
 #nav-logo  {
@@ -79,19 +73,24 @@ body {
     text-decoration: none; 
 }
 
+#icon {
+    font-size: 20px;
+    cursor: pointer;
+}
+
 .header-hr {
     border: none;
     height: 1px; /* Thin line */
     background-color: #ccc; /* Adjust color */
-    margin: 5.0px 0; /* Small spacing */
+    margin: 5px 0; /* Small spacing */
 }
 
 hr.solid {
     border: none;
-    height: 1px; /* Make it very thin */
-    background-color: #ccc; /* Adjust color */
+    height: 1px;
+    background-color: #ccc;
     width: 10%; 
-    margin: 5px 0; /* Reduce spacing above/below */
+    margin: 5px 0;
 }
 
 a {
@@ -105,15 +104,16 @@ nav ul {
 
 .nav-menu {
     display: grid;
-    grid-template-columns: repeat(5, auto);
+    grid-template-columns: repeat(4, auto);
     list-style: none;
     text-align: center;
-    width: 70%;
-    justify-self: end;
+    width: auto;
+    max-width: 70%;
+    justify-self: center; /* Centers the nav links */
+    gap: 20px; /* Adds space between links */
 }
 
 .nav-links {
-    position: relative;
     color: var(--secondary-color-2);
     text-decoration: none;
     transition: color 0.2s ease-out;
@@ -125,14 +125,6 @@ nav ul {
 
 .nav-links:hover::after {
     background-color: var(--tertiary-color-2);
-}
-
-.menu-toggle .bar {
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    background: var(--secondary-color-2);
-    transition: all 0.2s ease-in-out;
 }
 
 #home .intro {
@@ -207,6 +199,7 @@ nav ul {
     border-radius: 8px;
     padding: 15px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; /* Indicates it's clickable */
 }
 
 .category:hover {
@@ -315,6 +308,56 @@ nav ul {
     transform: translateY(2px);
 }
 
+.experience-container {
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* .experience-details {
+    font-family: 'Ubuntu', sans-serif;
+    color: var(--text-color);
+} */
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.location {
+    font-size: 1.2em;
+    color: var(--secondary-color);
+}
+
+.date {
+    font-size: 0.9em;
+    color: var(--tertiary-color);
+}
+
+.description {
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+.experience-container ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.experience-container ul li {
+    list-style-type: disc;
+    margin-bottom: 5px;
+}
+
 /* Resume Section */
 #resume-section {
     padding: 50px 20px;
@@ -384,6 +427,40 @@ nav ul {
     color: var(--tertiary-color);
 }
 
+.challenge-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.challenge-list li {
+    /* background: var(--primary-color);
+    border: 2px solid var(--tertiary-color); */
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.challenge-list li:hover {
+    transform: translateY(-3px);
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.challenge-list li a {
+    color: var(--secondary-color-2);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: block;
+    transition: color 0.3s ease-in-out;
+}
+
+.challenge-list li a:hover {
+    color: var(--tertiary-color-2);
+}
+
 /* Footer Styles */
 footer {
     width: 100%;
@@ -424,75 +501,24 @@ footer {
     }
 
     .nav-menu {
-        display: grid;
-        grid-template-columns: auto;
-        background: var(--tertiary-color);
-        margin: 0;
-        width: 100%;
-        position: absolute;
-        top: 80px;
-        left: -100%;
-        opacity: 0;
-        transition: all 0.5s ease-in-out;
-    }
-
-    .nav-menu.active {
-        background: var(--primary-color-2);
-        left: 0;
-        opacity: 1;
-        transition: all 0.5s ease-in-out;
-    }
-
-    .nav-links {
-        background-color: var(--secondary-color-2);
-        text-align: center;
-        padding: 15px 0;
-        display: block;
-        font-size: 1rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
     }
 
     .nav-links:hover {
-        background-color: var(--primary-color-2);
-        color: white;
+        color: var(--tertiary-color);
         transition: all 0.3s ease-in-out;
     }
 
     .navbar {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        padding: 15px 0;
     }
 
     .nav-menu li {
-        width: 100%;
-    }
-
-    #mobile-menu {
-        position: absolute;
-        top: 15px;
-        right: 20px;
-        cursor: pointer;
-        z-index: 1000;
-    }
-
-    .menu-toggle .bar {
-        display: block;
-        width: 25px;
-        height: 3px;
-        margin: 5px auto;
-        background-color: white;
-        transition: all 0.3s ease-in-out;
-    }
-
-    #mobile-menu.is-active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    #mobile-menu.is-active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    #mobile-menu.is-active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
+        margin: 5px 0;
     }
 
     .categories {
